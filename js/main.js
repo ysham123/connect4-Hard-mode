@@ -194,7 +194,7 @@ const invite = normalizeCode(new URLSearchParams(location.search).get('room'));
 let savedName = '';
 try { savedName = localStorage.getItem('overdrop.name') || ''; } catch { /* ignore */ }
 if (invite.length === 5 && lastRoom() === invite) {
-  joinRoom(savedName || 'Player', invite);
+  joinRoom(savedName, invite);
 } else {
   goHome();
 }

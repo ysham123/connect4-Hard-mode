@@ -43,7 +43,7 @@ export function renderHome(root, { invite = '', onCreate, onJoin, onLocal, onSol
   const name = () => {
     const n = nameEl.value.trim().slice(0, 16);
     store('overdrop.name', n);
-    return n || 'Player';
+    return n;
   };
   const join = () => {
     const code = normalizeCode(codeEl.value);
