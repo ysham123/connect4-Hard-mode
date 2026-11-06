@@ -23,7 +23,7 @@ export function showRules() {
     </div>
 
     <h4>Floor collapse</h4>
-    <p>Every few turns (shown under the board) the bottom row is destroyed and the whole board drops one row. Lines formed by the fall count. If the collapse makes lines for more than one side, the side with more lines wins the round; equal is a drawn round.</p>
+    <p>Every few turns (shown under the board) the bottom row is destroyed and the whole board drops one row. Anything you built on the floor goes with it, and every column gets a free cell on top. A full board never stalls: it collapses instead.</p>
 
     <h4>Tie breaks</h4>
     <ul>
