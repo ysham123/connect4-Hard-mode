@@ -318,10 +318,11 @@ a { color: var(--t2); }
 .setting { display: grid; gap: 8px; }
 .setting-label { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .setting-label em { font-style: normal; color: var(--dim); letter-spacing: 0.04em; text-transform: none; font-weight: 500; }
-.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--seg-min, 56px), 1fr)); gap: 6px; }
+.seg[data-key="matchTo"] { --seg-min: 96px; }
+.seg[data-key="preset"] { --seg-min: 86px; }
 .seg button {
-  flex: 1 1 auto;
-  min-width: 52px;
+  min-width: 0;
   min-height: 40px;
   padding: 0 12px;
   border-radius: 10px;
@@ -345,13 +346,15 @@ a { color: var(--t2); }
 .game {
   height: 100dvh;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px env(safe-area-inset-bottom);
 }
-.game .topbar { padding: 10px 6px 6px; }
-.round-meta { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; white-space: nowrap; }
+.game .topbar { padding: 10px 6px 6px; min-width: 0; }
+.round-meta { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .code-chip {
   font-family: var(--display);
   letter-spacing: 0.18em;
@@ -998,7 +1001,12 @@ kbd.k { font-family: var(--font); font-size: 12px; padding: 1px 6px; border-radi
   .pc-name { font-size: 13px; }
   .pc-disc { width: 16px; height: 16px; }
   .players.many .pc-top .tag { display: none; }
+  .players.many .pc-top { flex-wrap: wrap; row-gap: 6px; }
+  .players.many .pc-name { flex: 1 1 0; }
+  .players.many .pc-score { order: 3; width: 100%; margin-left: 0; padding-left: 2px; }
   .players.many .pc-score i { width: 7px; height: 7px; }
+  .players.many .energy-num { display: none; }
+  .game .brand { display: none; }
   .ab { padding: 8px 9px; min-height: 50px; }
   .ab-desc { display: none; }
   .ab-name { font-size: 13px; }
