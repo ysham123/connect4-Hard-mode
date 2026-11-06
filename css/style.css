@@ -102,7 +102,7 @@ a { color: var(--t2); }
   box-shadow: 0 8px 28px rgba(255, 46, 99, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .btn.hot:hover:not(:disabled) { background: linear-gradient(135deg, #ff4775, #ff7d55); }
-.btn.ghost { background: transparent; }
+.btn.phantom { background: transparent; }
 .btn.small { min-height: 36px; padding: 0 12px; font-size: 12px; border-radius: 10px; }
 .btn.block { width: 100%; }
 .btn.big { min-height: 56px; font-size: 16px; }
@@ -588,7 +588,7 @@ a { color: var(--t2); }
 }
 .board > div { position: absolute; inset: 0; pointer-events: none; }
 
-.disc, .ghost {
+.disc, .phantom {
   position: absolute;
   width: var(--cell);
   height: var(--cell);
@@ -596,7 +596,7 @@ a { color: var(--t2); }
   top: calc((var(--rows) - 1 - var(--r)) * var(--cell));
   will-change: transform;
 }
-.disc::before, .ghost::before {
+.disc::before, .phantom::before {
   content: '';
   position: absolute;
   inset: 8%;
@@ -604,7 +604,7 @@ a { color: var(--t2); }
   background: radial-gradient(circle at 34% 30%, var(--tc-hi) 0 10%, var(--tc) 44%, var(--tc-lo) 100%);
   box-shadow: inset 0 -3px 7px rgba(0, 0, 0, 0.38), inset 0 0 0 calc(var(--cell) * 0.055) rgba(0, 0, 0, 0.16);
 }
-.disc::after, .ghost::after {
+.disc::after, .phantom::after {
   content: '';
   position: absolute;
   left: 50%;
@@ -615,21 +615,21 @@ a { color: var(--t2); }
   opacity: 0.45;
 }
 /* Shape marks so colors are never the only cue */
-.disc.t0::after, .ghost.t0::after { border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.75); }
-.disc.t1::after, .ghost.t1::after { width: 24%; height: 24%; border: 2px solid rgba(80, 50, 0, 0.75); transform: translate(-50%, -50%) rotate(45deg); }
-.disc.t2::after, .ghost.t2::after {
+.disc.t0::after, .phantom.t0::after { border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.75); }
+.disc.t1::after, .phantom.t1::after { width: 24%; height: 24%; border: 2px solid rgba(80, 50, 0, 0.75); transform: translate(-50%, -50%) rotate(45deg); }
+.disc.t2::after, .phantom.t2::after {
   background:
     linear-gradient(rgba(0, 40, 60, 0.8), rgba(0, 40, 60, 0.8)) center / 100% 2px no-repeat,
     linear-gradient(rgba(0, 40, 60, 0.8), rgba(0, 40, 60, 0.8)) center / 2px 100% no-repeat;
 }
-.disc.t3::after, .ghost.t3::after { background: rgba(20, 60, 10, 0.8); clip-path: polygon(50% 8%, 95% 90%, 5% 90%); }
-.disc.tw::before, .ghost.tw::before {
+.disc.t3::after, .phantom.t3::after { background: rgba(20, 60, 10, 0.8); clip-path: polygon(50% 8%, 95% 90%, 5% 90%); }
+.disc.tw::before, .phantom.tw::before {
   inset: 9%;
   border-radius: 18%;
   background: repeating-linear-gradient(45deg, #5d6588 0 5px, #4a5172 5px 10px);
   box-shadow: inset 0 0 0 2px #8f97bd, inset 0 -5px 9px rgba(0, 0, 0, 0.45);
 }
-.disc.tw::after, .ghost.tw::after { display: none; }
+.disc.tw::after, .phantom.tw::after { display: none; }
 
 .disc.fall { animation: fall var(--dur, 420ms) var(--delay, 0ms) both; }
 @keyframes fall {
@@ -640,9 +640,9 @@ a { color: var(--t2); }
 }
 .board.has-result .disc:not(.win) { filter: saturate(0.5) brightness(0.55); transition: filter 0.5s 0.3s; }
 
-.ghost.sink { animation: sink 0.75s 0.1s cubic-bezier(.5, 0, 1, .5) both; }
+.phantom.sink { animation: sink 0.75s 0.1s cubic-bezier(.5, 0, 1, .5) both; }
 @keyframes sink { to { transform: translateY(calc(var(--cell) * 1.3)) rotate(8deg); opacity: 0.2; } }
-.ghost.shatter { animation: shatter 0.45s ease-out both; }
+.phantom.shatter { animation: shatter 0.45s ease-out both; }
 @keyframes shatter {
   0% { transform: scale(1); opacity: 1; filter: brightness(2.2); }
   100% { transform: scale(1.7); opacity: 0; filter: brightness(3); }
@@ -1011,7 +1011,7 @@ kbd.k { font-family: var(--font); font-size: 12px; padding: 1px 6px; border-radi
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .disc.fall, .ghost.sink, .ghost.shatter, .board-frame.quake, .board-frame.jolt, .logo-discs i, .mark.win::before, .mark.target::before { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .disc.fall, .phantom.sink, .phantom.shatter, .board-frame.quake, .board-frame.jolt, .logo-discs i, .mark.win::before, .mark.target::before { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 
 .input.shake { border-color: var(--danger); animation: quake 0.4s cubic-bezier(.36, .07, .19, .97) both; }

@@ -132,12 +132,12 @@ export class Board {
     }
     if (fx && fx.collapsed) {
       fx.collapsed.forEach((v, c) => {
-        if (v !== EMPTY) html += `<div class="ghost sink ${v === WALL ? 'tw' : 't' + (v - 1)}" style="--r:0;--c:${c}"></div>`;
+        if (v !== EMPTY) html += `<div class="phantom sink ${v === WALL ? 'tw' : 't' + (v - 1)}" style="--r:0;--c:${c}"></div>`;
       });
     }
     if (fx && fx.destroyed && fx.destroyed.length) {
       for (const d of fx.destroyed) {
-        html += `<div class="ghost shatter ${d.v === WALL ? 'tw' : 't' + (d.v - 1)}" style="--r:${d.r};--c:${d.c}"></div>`;
+        html += `<div class="phantom shatter ${d.v === WALL ? 'tw' : 't' + (d.v - 1)}" style="--r:${d.r};--c:${d.c}"></div>`;
         this.explode(d.r, d.c, d.v);
       }
     }
