@@ -471,6 +471,8 @@ a { color: var(--t2); }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 8px 14px;
+  margin: -8px -14px;
 }
 .turn-sub { font-size: 13px; color: var(--muted); letter-spacing: 0.06em; }
 .turn-sub b { color: var(--text); }
