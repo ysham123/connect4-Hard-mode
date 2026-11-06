@@ -78,7 +78,7 @@ export class GameView {
     this.board = new Board($('#g-area', this.root), {
       onHover: (c, r) => { this.hoverCol = c; this.hoverRow = r; this.refreshMarks(); },
       onLeave: () => { this.hoverCol = null; this.hoverRow = null; this.refreshMarks(); },
-      onTap: (c, r, touch) => { unlockAudio(); this.tryAct(c, r, touch); },
+      onTap: (c, r, touch) => { unlockAudio(); this.touchInput = touch; this.tryAct(c, r, touch); },
     });
     this.renderSound();
     $('#g-sound', this.root).addEventListener('click', () => {
@@ -156,6 +156,7 @@ export class GameView {
       this.pending = null;
       this.tool = 'drop';
       this.armed = null;
+      if (this.touchInput) { this.hoverCol = null; this.hoverRow = null; }
       const lands = this.board.renderDiscs(g, animate);
       if (animate) this.playFx(g, lands);
       this.lastSeq = g.seq;
