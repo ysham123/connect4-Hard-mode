@@ -388,6 +388,10 @@ export class HostSession extends BaseSession {
       }
     }
     if (!this.transport) throw friendly(lastErr);
+    if (this.closed) {
+      this.transport.destroy();
+      throw new Error('Cancelled');
+    }
 
     this.room = new Room({
       kind: 'online',
@@ -468,10 +472,10 @@ export class HostSession extends BaseSession {
 
   close() {
     if (this.closed) return;
-    this.broadcast({ t: 'bye' });
+    if (this.room) this.broadcast({ t: 'bye' });
     this.closed = true;
     if (this.stopTicker) this.stopTicker();
-    window.removeEventListener('pagehide', this.unload);
+    if (this.unload) window.removeEventListener('pagehide', this.unload);
     setTimeout(() => this.transport && this.transport.destroy(), 150);
   }
 }
@@ -500,6 +504,10 @@ export class GuestSession extends BaseSession {
     t.onMessage = (msg) => this.receive(msg);
     t.onClose = () => { if (this.transport === t) this.handleLost(); };
     await t.connect(this.code);
+    if (this.closed) {
+      t.destroy();
+      throw new Error('Cancelled');
+    }
     this.transport = t;
     this.lastHeard = Date.now();
     t.send({ t: 'hello', cid: this.cid, name: this.name });
