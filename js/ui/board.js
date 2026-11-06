@@ -31,8 +31,8 @@ export class Board {
     this.fxl = this.el.querySelector('.fxl');
     this.dz = this.el.querySelector('.dz-disc');
     this.hit = this.el.querySelector('.hit');
-    this.cols = 7;
-    this.rows = 6;
+    this.cols = 0; // set by the first setDims call
+    this.rows = 0;
     this.cell = 64;
     this.marksKey = '';
     this.bindInput();
