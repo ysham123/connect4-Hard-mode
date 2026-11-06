@@ -1011,3 +1011,5 @@ kbd.k { font-family: var(--font); font-size: 12px; padding: 1px 6px; border-radi
 @media (prefers-reduced-motion: reduce) {
   .disc.fall, .ghost.sink, .ghost.shatter, .board-frame.quake, .board-frame.jolt, .logo-discs i, .mark.win::before, .mark.target::before { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+.input.shake { border-color: var(--danger); animation: quake 0.4s cubic-bezier(.36, .07, .19, .97) both; }
