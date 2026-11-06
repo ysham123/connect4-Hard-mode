@@ -1011,6 +1011,8 @@ kbd.k { font-family: var(--font); font-size: 12px; padding: 1px 6px; border-radi
   .ab-desc { display: none; }
   .ab-name { font-size: 13px; }
   .ab-name kbd { display: none; }
+  .ab-cost { top: auto; bottom: 8px; right: 9px; }
+  .ab-cost i { width: 4px; height: 9px; }
   .round-meta { font-size: 11px; }
   .code-chip { font-size: 11px; padding: 6px 8px; }
   .icon-btn { width: 36px; height: 36px; }
